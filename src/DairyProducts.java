@@ -6,7 +6,6 @@ public class DairyProducts extends Product {
     protected int price;
 
     //Constructor
-
     @Override
     public void CalculateCost() {
 

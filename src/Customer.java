@@ -1,4 +1,4 @@
-public class Customer {
+public class Customer extends Cart {
 
     //Attributes
     int accountNumber;
