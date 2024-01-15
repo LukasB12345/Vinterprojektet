@@ -13,15 +13,13 @@ public class Item {
 
     //Constructor
     public Item(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.cost = CalculateCost(price, quantity);
+        this.name = name; //anger produktens namn
+        this.price = price; //anger produktens pris
+        this.quantity = quantity; //anger antalet (kvantiteten) av produkten man valt att köpa
     }
 
     public double CalculateCost(double price, int quantity) {
-        double cost = quantity * price;
-        return cost;
+        return quantity * price; //kostnaden bestäms av priset för varje produkt samt hur många produkter man valt att köpa.
     }
 
 }

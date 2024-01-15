@@ -1,4 +1,8 @@
 public class Items {
+
+    //Skapar produkter här
+    //Produkterna är static final för att deras värden inte ska ändras. Det finns bestämda priser för produkterna. Och man väljer direkt hur många produkter (quantity) man vill köpa.
+
     public static final Item milk = new Item("milk", 13, 2);
     public static final Item cream = new Item("cream", 26.90, 4);
     public static final Item meat = new Item("meat", 399.90, 1);

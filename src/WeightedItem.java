@@ -2,20 +2,18 @@
 public class WeightedItem extends Item {
 
     //Attributes
-    protected double weight;
+    private double weight; //Bara variabeln/attributet weight behöver läggas till: name och p.rice finns redan
 
     //Constructor
-    public WeightedItem(String name, double price, double weight) {
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-        this.cost = CalculateCost(price, weight); //Använder CalculateCost redan här för att ge ett värde för att det inte ska bli fel sen.
+    public WeightedItem(String name, double price, double weight) { //skapar en WeightedItem
+        this.name = name; //anger produktens namn
+        this.price = price; //anger produktens pris
+        this.weight = weight; //anger produktens vikt
     }
 
-    @Override
-    public double CalculateCost(double price, double weight) {
-        double cost = weight * price;
-        return cost;
+
+    public double CalculateCost(double price, double weight) { //Klass för att beräkna priset av en produkt där priset beror på vikt.
+        return weight * price; //Returnerar priset på produkten/produkterna. Detta beror på hur många man har köpt och vad varje produkt kostar.
     }
 }
 
