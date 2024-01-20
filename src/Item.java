@@ -22,5 +22,4 @@ public class Item {
     public double CalculateCost(double price, int quantity) {
         return quantity * price; //kostnaden bestäms av priset för varje produkt samt hur många produkter man valt att köpa.
     }
-
 }

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Items {
-
     //Skapar produkter här
     //Produkterna är static final för att deras värden inte ska ändras. Det finns bestämda priser för produkterna. Och kvantiteten är 1 för produkter utan vikt. Sedan får man lägga till produkten fler gånger för att köpa fler
 
@@ -24,7 +23,5 @@ public class Items {
             System.out.println(item.name + " Price: " + item.price + " SEK/KG");
         }
     }
-
-
 }
 

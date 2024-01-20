@@ -4,7 +4,6 @@ public class Cart {
     public ArrayList<Item> items; //Arraylist där alla varor som lagts till i varukorgen som INTE HAR vikt samlas
     public ArrayList<WeightedItem> itemsWeight; //Arraylist där alla varor som lagts till i varukorgen som HAR vikt samlas
 
-
     // Default constructor för cart
     public Cart() {
         items = new ArrayList<>();

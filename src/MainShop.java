@@ -33,9 +33,7 @@ public class MainShop {
                 scanner.next();
             }
         }
-
     }
-
 
     private static void addItem() { //Metod för att lägga till en produkt
         System.out.println("Please enter the item you want to add to the cart");
