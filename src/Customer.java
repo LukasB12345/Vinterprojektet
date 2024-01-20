@@ -10,3 +10,5 @@ public class Customer extends Cart {
     }
 
 }
+
+//Ska antagligen bort, eventuellt utvecklas i ett senare projekt där olika kunder kan ha en egen varukorg
