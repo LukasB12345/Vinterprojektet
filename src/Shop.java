@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Shop {
     private static final Scanner scanner = new Scanner(System.in); //Scanner för att läsa in användarens val
-    static Cart cart = new Cart(); //Varukorg som är en egen klass
+    static Cart cart = new Cart(); //Varukorg som är en egen klass skapas här som sedan används för att lägga varor i varukorgen
 
     public Shop() {
         main();
@@ -24,10 +24,10 @@ public class Shop {
                 }
                 switch (choice) {
                     case 1 -> AddItem();//Ifall användaren väljer 1 anropas metoden
-                    case 2 -> removeItem();//Ifall användaren väljer 2 anropas metoden
-                    case 3 -> listAllItemsInCart(); //Ifall användaren väljer 3 anropas metoden
-                    case 4 -> showTotalPrice(); //Ifall användaren väljer 4 anropas metoden
-                    case 5 -> listAllAvailableItems(); //Ifall användaren väljer 5 anropas metoden
+                    case 2 -> RemoveItem();//Ifall användaren väljer 2 anropas metoden
+                    case 3 -> ListAllItemsInCart(); //Ifall användaren väljer 3 anropas metoden
+                    case 4 -> ShowTotalPrice(); //Ifall användaren väljer 4 anropas metoden
+                    case 5 -> ListAllAvailableItems(); //Ifall användaren väljer 5 anropas metoden
                     case 6 -> { //Ifall användaren väljer 6 körs koden på de 2 nedre raderna:
                         cart.GetReciept(); //Ifall användaren väljer 5 avslutas programmet då running blir falsk och kvittot hämtas
                         running = false; //Vill man avsluta programmet blir värdet falskt och koden slutar köras/programmet avslutas
@@ -35,7 +35,7 @@ public class Shop {
                 }
             } else { //om man inte väljer/skriver 1-6:
                 System.out.println("You need to choose an integer between 1-6!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
-                scanner.next();
+                scanner.next(); //läser in användarens val med en scanner
             }
         }
     }
@@ -59,15 +59,17 @@ public class Shop {
         for (WeightedItem i : Items.weightedItemList) { //Kollar igenom fältet med listan av produkter som finns i sortimentet
             if (i.name.equals(item)) { //om produkten som angetts finns i sortimentet:
                 System.out.println("Please enter the weight of the product as a double (X.X)");
-                double weight = scanner.nextDouble();
-                i.SetWeight(weight);
-                weightedItemToAdd = i; //alla i = true och läggs till
-                cart.AddWeightedItem(weightedItemToAdd); //lägger till produkten(med vikt) i varukorgen
-                System.out.println("Item added to cart");
-                return;
+                if (scanner.hasNextDouble()) {
+                    double weight = scanner.nextDouble();
+                    i.SetWeight(weight);
+                    weightedItemToAdd = i; //alla i = true och läggs till
+                    cart.AddWeightedItem(weightedItemToAdd); //lägger till produkten(med vikt) i varukorgen
+                    System.out.println("Item added to cart");
+                    return;
+                }
             }
         }
-
+        
         if (itemToAdd == null && weightedItemToAdd == null) { //säger till ifall produkten som angetts inte finns i sortimentet och ger användaren en ny chans att lägga till en produkt genom att anropa den metoden (addItem)
             System.out.println("The product is not available");
             AddItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
@@ -75,7 +77,7 @@ public class Shop {
         }
     }
 
-    private static void removeItem() {
+    private static void RemoveItem() {
         System.out.println("Please enter the item you want to remove from the cart");
         String item = scanner.nextLine();
         Item itemToRemove = null;
@@ -99,21 +101,21 @@ public class Shop {
         }
 
         if (itemToRemove == null && weightedItemToRemove == null) {
-            System.out.println("The product is not available");
+            System.out.println("The product is not available or not added to your cart yet");
         }
     }
 
-    private static void listAllItemsInCart() {
+    private static void ListAllItemsInCart() { //metod för att lista upp alla produkter som lagts till i varukorgen
         cart.DisplayCart();
     }
 
-    private static void showTotalPrice() {
+    private static void ShowTotalPrice() { //metod för att visa/skriva ut det totala priset för de varor som finns i varukorgen
         double totalPrice = cart.CalculateTotalCost(); //totala priset beräknas i metoden CalculateTotalCost
         System.out.println("The total price is:" + totalPrice + "SEK"); //och skriv ut
     }
 
-    private static void listAllAvailableItems() {
-        Items.showAvailableItems();
+    private static void ListAllAvailableItems() { //metod för att lista upp alla items som finns. Det finns en annan metod som redan gör detta och därför anropas den metoden här. Detta kan optimeras genom atyt ta bort denna metod och byta ut den mot den som redan finns (ShowAvailableItems).
+        Items.ShowAvailableItems();
     }
 }
 

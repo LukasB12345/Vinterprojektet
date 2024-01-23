@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Items {
+public class Items { //Skapar produkterna som man sedan kan lägga till i sortimentet. Just nu finns 3 items och 3 weightedItems i sortimentet. Men går att utöka oändligt.
     //Skapar produkter här
     //Produkterna är static final för att deras värden inte ska ändras. Det finns bestämda priser för produkterna. Och kvantiteten är 1 för produkter utan vikt. Sedan får man lägga till produkten fler gånger för att köpa fler
 
@@ -15,7 +15,7 @@ public class Items {
     public static final Item[] itemList = {milk, cream, meat};
     public static final WeightedItem[] weightedItemList = {candy, tomato, carrot};
 
-    public static void showAvailableItems() {
+    public static void ShowAvailableItems() {
         for (Item item : itemList) {
             System.out.println(item.name + " Price: " + item.cost + " SEK");
         }

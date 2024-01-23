@@ -16,7 +16,7 @@ public class Item {
         this.name = name; //anger produktens namn
         this.price = price; //anger produktens pris
         this.quantity = quantity; //anger antalet (kvantiteten) av produkten man valt att köpa
-        this.cost = CalculateCost(this.price, this.quantity);
+        this.cost = CalculateCost(this.price, this.quantity); //Använder metoden nedan för att beräkna kostnaden, som sedan lagras i variabeln cost
     }
 
     public double CalculateCost(double price, int quantity) {
