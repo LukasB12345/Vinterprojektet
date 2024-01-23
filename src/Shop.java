@@ -5,11 +5,11 @@ public class Shop {
     static Cart cart = new Cart(); //Varukorg som är en egen klass skapas här som sedan används för att lägga varor i varukorgen
 
     public Shop() {
-        main();
+        Main();
     }
 
 
-    public void main() {
+    public void Main() {
 
         boolean running = true; //Programmet körs så länge användaren inte väljer 6 (Avsluta programmet genom att göra running till false) genom en while-loop
 
@@ -41,6 +41,8 @@ public class Shop {
     }
 
     private static void AddItem() { //Metod för att lägga till en produkt
+        System.out.println("The available items are: "); //berättar vilka produkter som finns att köpa genom en annan metod.
+        ListAllAvailableItems(); //metod för att lista produkter som finns i sortimentet
         System.out.println("Please enter the item you want to add to the cart");
         String item = scanner.nextLine();
 
@@ -72,6 +74,8 @@ public class Shop {
 
         if (itemToAdd == null && weightedItemToAdd == null) { //säger till ifall produkten som angetts inte finns i sortimentet och ger användaren en ny chans att lägga till en produkt genom att anropa den metoden (addItem)
             System.out.println("The product is not available");
+            System.out.println("The available items are: "); //berättar vilka produkter som finns att köpa.
+            ListAllAvailableItems();
             AddItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
             return;
         }
@@ -79,6 +83,8 @@ public class Shop {
 
     private static void RemoveItem() { //metod för att ta bort en produkt från varukorgen
         System.out.println("Please enter the item you want to remove from the cart");
+        System.out.println("The products added to your cart as of now are:"); //skriver ut vilka produkter som hitills har lagts till i varukorgen för att användaren enklare ska vbeta vad som kan tas bort från varukorgen
+        ListAllItemsInCart();//med denna metod görs det som skrevs ovan
         String item = scanner.nextLine(); //läser in vilken produkt användaren vill ta bort
         Item itemToRemove = null; //Variabel som letar efter produkten som ska tas bort. Är från början null, eftersom ingen produkt ska tas bort direkt.
         WeightedItem weightedItemToRemove = null; //Variabel som letar efter produkten med vikt som ska tas bort. Är från början null, eftersom ingen produkt ska tas bort direkt.
@@ -105,17 +111,17 @@ public class Shop {
         }
     }
 
-    private static void ListAllItemsInCart() { //metod för att lista upp alla produkter som lagts till i varukorgen
+    private static void ListAllItemsInCart() { //Metod för att lista upp alla produkter som lagts till i varukorgen
         cart.DisplayCart();
     }
 
-    private static void ShowTotalPrice() { //metod för att visa/skriva ut det totala priset för de varor som finns i varukorgen
+    private static void ShowTotalPrice() { //Metod för att visa/skriva ut det totala priset för de varor som finns i varukorgen
         double totalPrice = cart.CalculateTotalCost(); //totala priset beräknas i metoden CalculateTotalCost
         System.out.println("The total price is:" + totalPrice + "SEK"); //och skriv ut
     }
 
-    private static void ListAllAvailableItems() { //metod för att lista upp alla items som finns. Det finns en annan metod som redan gör detta och därför anropas den metoden här. Detta kan optimeras genom atyt ta bort denna metod och byta ut den mot den som redan finns (ShowAvailableItems).
-        Items.ShowAvailableItems();
+    private static void ListAllAvailableItems() { //Metod för att lista upp alla items som finns. Det finns en annan metod som redan gör detta och därför anropas den metoden här. Detta kan optimeras genom att ta bort denna metod och byta ut den mot den som redan finns (ShowAvailableItems).
+        Items.ShowAvailableItems(); //anropar en annan metod som gör detta (vet att det kan optimeras, men då de finns i olika klasser görs detta på ett enklare sätt via detta sätt)
     }
 }
 
