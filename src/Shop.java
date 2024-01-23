@@ -69,7 +69,7 @@ public class Shop {
                 }
             }
         }
-        
+
         if (itemToAdd == null && weightedItemToAdd == null) { //säger till ifall produkten som angetts inte finns i sortimentet och ger användaren en ny chans att lägga till en produkt genom att anropa den metoden (addItem)
             System.out.println("The product is not available");
             AddItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
@@ -77,11 +77,11 @@ public class Shop {
         }
     }
 
-    private static void RemoveItem() {
+    private static void RemoveItem() { //metod för att ta bort en produkt från varukorgen
         System.out.println("Please enter the item you want to remove from the cart");
-        String item = scanner.nextLine();
-        Item itemToRemove = null;
-        WeightedItem weightedItemToRemove = null;
+        String item = scanner.nextLine(); //läser in vilken produkt användaren vill ta bort
+        Item itemToRemove = null; //Variabel som letar efter produkten som ska tas bort. Är från början null, eftersom ingen produkt ska tas bort direkt.
+        WeightedItem weightedItemToRemove = null; //Variabel som letar efter produkten med vikt som ska tas bort. Är från början null, eftersom ingen produkt ska tas bort direkt.
         for (Item i : cart.items) { //Kollar igenom fältet med listan av produkter som finns i sortimentet
             if (i.name.equals(item)) { //om det finns så blir itemExists true
                 itemToRemove = i; //alla i = true och läggs till
@@ -100,7 +100,7 @@ public class Shop {
             }
         }
 
-        if (itemToRemove == null && weightedItemToRemove == null) {
+        if (itemToRemove == null && weightedItemToRemove == null) { //Om produkten som man vill försöka ta bort fortfarande == null betyder det att produkten inte finns i varukorgen/sortimentet
             System.out.println("The product is not available or not added to your cart yet");
         }
     }
