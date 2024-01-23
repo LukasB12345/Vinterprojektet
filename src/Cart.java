@@ -53,7 +53,7 @@ public class Cart {
         return totalCost;
     }
 
-    public void getReciept() { //Här skrivs kvittot ut genom for each loopar, först skrivs alla produkter ut sedan alla produkter med vikt
+    public void GetReciept() { //Här skrivs kvittot ut genom for each loopar, först skrivs alla produkter ut sedan alla produkter med vikt
         System.out.println("Thank you for visiting my store! Here is your reciept:");
         for (Item item : items) {
             System.out.println(item.name + " - Quantity: " + item.quantity + " - Cost: " + item.cost + " SEK"); //först för prodkter utan vikt

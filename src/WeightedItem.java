@@ -11,7 +11,7 @@ public class WeightedItem extends Item {
         this.cost = CalculateCost();
     }
 
-    public void setWeight(double weight) {
+    public void SetWeight(double weight) {
         this.weight = weight; //anger produktens vikt
     }
 

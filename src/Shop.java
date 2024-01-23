@@ -23,13 +23,13 @@ public class Shop {
                     System.out.println("You need to choose an integer between 1-6!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
                 }
                 switch (choice) {
-                    case 1 -> addItem();//Ifall användaren väljer 1 anropas metoden
+                    case 1 -> AddItem();//Ifall användaren väljer 1 anropas metoden
                     case 2 -> removeItem();//Ifall användaren väljer 2 anropas metoden
                     case 3 -> listAllItemsInCart(); //Ifall användaren väljer 3 anropas metoden
                     case 4 -> showTotalPrice(); //Ifall användaren väljer 4 anropas metoden
                     case 5 -> listAllAvailableItems(); //Ifall användaren väljer 5 anropas metoden
                     case 6 -> { //Ifall användaren väljer 6 körs koden på de 2 nedre raderna:
-                        cart.getReciept(); //Ifall användaren väljer 5 avslutas programmet då running blir falsk och kvittot hämtas
+                        cart.GetReciept(); //Ifall användaren väljer 5 avslutas programmet då running blir falsk och kvittot hämtas
                         running = false; //Vill man avsluta programmet blir värdet falskt och koden slutar köras/programmet avslutas
                     }
                 }
@@ -40,7 +40,7 @@ public class Shop {
         }
     }
 
-    private static void addItem() { //Metod för att lägga till en produkt
+    private static void AddItem() { //Metod för att lägga till en produkt
         System.out.println("Please enter the item you want to add to the cart");
         String item = scanner.nextLine();
 
@@ -60,7 +60,7 @@ public class Shop {
             if (i.name.equals(item)) { //om produkten som angetts finns i sortimentet:
                 System.out.println("Please enter the weight of the product as a double (X.X)");
                 double weight = scanner.nextDouble();
-                i.setWeight(weight);
+                i.SetWeight(weight);
                 weightedItemToAdd = i; //alla i = true och läggs till
                 cart.AddWeightedItem(weightedItemToAdd); //lägger till produkten(med vikt) i varukorgen
                 System.out.println("Item added to cart");
@@ -70,7 +70,7 @@ public class Shop {
 
         if (itemToAdd == null && weightedItemToAdd == null) { //säger till ifall produkten som angetts inte finns i sortimentet och ger användaren en ny chans att lägga till en produkt genom att anropa den metoden (addItem)
             System.out.println("The product is not available");
-            addItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
+            AddItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
             return;
         }
     }
@@ -100,8 +100,6 @@ public class Shop {
 
         if (itemToRemove == null && weightedItemToRemove == null) {
             System.out.println("The product is not available");
-            removeItem(); //finns inte produkten i sortimentet anropas metoden igen och man får försöka köpa en ny produkt
-            return;
         }
     }
 
